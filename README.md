@@ -22,6 +22,7 @@
 | -------------------------| ---------- | ----------------------------- |
 | title                    | string     | null: false                   |
 | description              | text       | null: false                   |
+| price                    | integer    | null: false                   |
 | status_id                | integer    | null: false                   | 
 | category_id              | integer    | null: false                   |             
 | shipping_charge_id       | integer    | null: false                   |            

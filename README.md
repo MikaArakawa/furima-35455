@@ -25,14 +25,13 @@
 | status_id                | integer    | null: false                   | 
 | category_id              | integer    | null: false                   |             
 | shipping_charge_id       | integer    | null: false                   |            
-| shipment_source_id       | integer    | null: false                   |             
-| shipping_days_id         | integer    | null: false                   |             
+| prefecture_id            | integer    | null: false                   |
+| shipping_date_id         | integer    | null: false                   |             
 | user                     | references |null: false, foreign_key: true |      
 
 ### Association
 
 - belongs_to :user
-- has_one_attached :purchased_item
 
 ## purchased_items テーブル
 
@@ -45,21 +44,18 @@
 
 - belongs_to :user
 - belongs_to :item
-- has_one_attached :address
 
 ## addressesテーブル
 
-| Column          | Type       | Options                      |
-| --------------- | ---------- | -----------                  |
-| postal_code     | text       | null: false                  |
-| prefectures     | text       | null: false                  |
-| city            | text       | null: false                  |
-| address1        | text       | null: false                  |
-| address2        | text       |                              |
-| phone           | text       | null: false                  |            
+| Column          | Type       | Options                        |
+| --------------- | ---------- | -----------                    |
+| postal_code     | integer    | null: false                    |
+| prefecture_id   | integer    | null: false                    |
+| city            | string     | null: false                    |
+| address         | string     | null: false                    |
+| building        | string     |                                |
+| phone           | integer    | null: false                    |            
 | purchased_item  | references | null: false, foreign_key: true |        
-| user            | references | null: false, foreign_key: true |        
-
 
 ### Association
 - belongs_to :purchased_item

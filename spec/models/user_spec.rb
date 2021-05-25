@@ -7,21 +7,17 @@ RSpec.describe User, type: :model do
     end
 
     context '内容に問題ない場合' do
-      it 'パスワード：6文字以上であれば登録できること' do
-        @user.password = '123qwe'
-        @user.password_confirmation = '123qwe'
+
+      it '全ての項目の入力が存在すれば登録できること' do
         expect(@user).to be_valid
       end
 
-      it 'パスワード；半角英数字混合での入力が必須であること（半角英数字が混合されていれば、登録が可能なこと）' do
+      it 'パスワード：6文字以上かつ半角英数字混合での入力が必須であること（半角英数字が混合されていれば、登録が可能なこと）' do
         @user.password = '111aaa'
         @user.password_confirmation = '111aaa'
         expect(@user).to be_valid
       end
 
-      it '全ての項目の入力が存在すれば登録できること' do
-        expect(@user).to be_valid
-      end
     end
 
     context '内容に問題がある場合' do
@@ -57,8 +53,8 @@ RSpec.describe User, type: :model do
       end
 
       it 'パスワード：5文字以下であれば登録できないこと' do
-        @user.password = '00000'
-        @user.password_confirmation = '00000'
+        @user.password = '000aa'
+        @user.password_confirmation = '000aa'
         @user.valid?
         expect(@user.errors.full_messages).to include('Password is too short (minimum is 6 characters)')
       end

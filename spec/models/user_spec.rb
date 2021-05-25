@@ -109,5 +109,6 @@ RSpec.describe User, type: :model do
     it '全ての項目の入力が存在すれば登録できること' do
       expect(@user).to be_valid
     end
+
   end
 end

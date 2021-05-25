@@ -7,7 +7,6 @@ RSpec.describe User, type: :model do
     end
 
     context '内容に問題ない場合' do
-
       it '全ての項目の入力が存在すれば登録できること' do
         expect(@user).to be_valid
       end
@@ -17,7 +16,6 @@ RSpec.describe User, type: :model do
         @user.password_confirmation = '111aaa'
         expect(@user).to be_valid
       end
-
     end
 
     context '内容に問題がある場合' do

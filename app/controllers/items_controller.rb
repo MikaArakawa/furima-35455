@@ -20,18 +20,21 @@ class ItemsController < ApplicationController
     end
   end
 
+  def show
+  end
+
   private
 
   def item_params
     params.require(:item).permit(:title, :description, :price, :status_id, :category_id, :shipping_charge_id, :prefecture_id,
-                                :shipping_date_id, :image).merge(user_id: current_user.id)
+                                 :shipping_date_id, :image).merge(user_id: current_user.id)
   end
 
-#   def set_item
-#     @item = Item.find(params[:id])
-#   end
+  # def set_item
+  #   @item = Item.find(params[:id])
+  # end
 
-#   def contributor_confirmation
-#     redirect_to root_path unless current_user == @item.user
-#   end
-# end
+  # def contributor_confirmation
+  #   redirect_to root_path unless current_user == @item.user
+  # end
+end

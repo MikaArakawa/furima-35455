@@ -128,7 +128,6 @@
       新規投稿商品
     </div>
     <ul class='item-lists'>
-    <% if @items %>
       <% @items.each do |item|%>
         <li class='list'>
           <%= link_to item_path(item.id) do %>
@@ -159,7 +158,6 @@
           <% end %>
         </li>
       <% end %>
-    <%end%>
     <% unless @items.present? %>
       <li class='list'>
         <%= link_to '#' do %>

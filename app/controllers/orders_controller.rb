@@ -1,5 +1,4 @@
 class OrdersController < ApplicationController
-
   def index
     @order = Order.new
   end
@@ -8,7 +7,7 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
     if @order.valid?
       @order.save
-      return redirect_to root_path
+      redirect_to root_path
     else
       render 'index'
     end
@@ -19,5 +18,4 @@ class OrdersController < ApplicationController
   def order_params
     params.require(:order).permit(:price)
   end
-
 end

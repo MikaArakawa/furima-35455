@@ -20,6 +20,6 @@ class Item < ApplicationRecord
   belongs_to :shipping_charge
 
   # has_one :purchased_item, dependent: :destroy
-  belongs_to :user # dependent: :destroy
+  belongs_to :user 
   has_one_attached :image
 end

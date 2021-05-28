@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_item, except: [:index, :new, :create]
-  before_action :contributor_confirmation, only: [:edit, :update, :destroy]
+  before_action :contributor_confirmation, only: [:edit, :update] #:destroy
 
   def index
     @items = Item.includes(:user).order('created_at DESC')
@@ -24,7 +24,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
-  end 
+  end
 
   def update
     if @item.update(item_params)

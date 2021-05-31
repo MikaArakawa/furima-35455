@@ -4,7 +4,6 @@ class OrdersController < ApplicationController
   def index
     @order_address = OrderAddress.new
     # @item =  定義する必要あり
-
   end
 
   def new
@@ -24,7 +23,8 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order_address).permit(:price, :postal_code, :prefecture, :city, :address, :building, :price, :item_id).merge(user_id: current_user.id, item_id: item.id) 
+    params.require(:order_address).permit(:price, :postal_code, :prefecture, :city, :address, :building, :price, :item_id).merge(
+      user_id: current_user.id, item_id: item.id
+    )
   end
-
 end

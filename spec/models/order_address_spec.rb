@@ -57,7 +57,7 @@ RSpec.describe OrderAddress, type: :model do
         expect(@order_address.errors.full_messages).to include('Price is invalid')
       end
       it 'priceが9,999,999円を超過すると保存できないこと' do
-        @order_address.price = 10000000
+        @order_address.price = 10_000_000
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include('Price is invalid')
       end

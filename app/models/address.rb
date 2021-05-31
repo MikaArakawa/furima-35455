@@ -15,4 +15,5 @@ end
   end
 
   belongs_to :order
+
 end

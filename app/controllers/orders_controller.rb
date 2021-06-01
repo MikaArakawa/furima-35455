@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
 
   def index
     @order_address = OrderAddress.new
-    # @item =  定義する必要あり
+    @item = Item.find(params[:item_id])
   end
 
   def new
@@ -11,20 +11,19 @@ class OrdersController < ApplicationController
   end
 
   def create
+    @item = Item.find(params[:item_id])
     @order_address = OrderAddress.new(order_params)
     if @order_address.valid?
       @order_address.save
       redirect_to root_path
     else
-      render :new
+      render :index
     end
   end
 
   private
 
   def order_params
-    params.require(:order_address).permit(:price, :postal_code, :prefecture, :city, :address, :building, :price, :item_id).merge(
-      user_id: current_user.id, item_id: item.id
-    )
+    params.require(:order_address).permit(:postal_code, :prefecture, :city, :address, :building, :phone).merge(user_id: current_user.id, item_id: @item.id)
   end
 end

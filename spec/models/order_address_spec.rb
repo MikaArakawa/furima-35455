@@ -11,15 +11,8 @@ RSpec.describe OrderAddress, type: :model do
       it 'すべての値が正しく入力されていれば保存できること' do
         expect(@order_address).to be_valid
       end
-      it 'cityは空でも保存できること' do
-        @order_address.city = ''
-        expect(@order_address).to be_valid
-      end
-      it 'addressは空でも保存できること' do
-        @order_address.address = ''
-        expect(@order_address).to be_valid
-      end
-      it 'buildingは空でも保存できること' do
+
+      it '建物名は任意であること' do
         @order_address.building = ''
         expect(@order_address).to be_valid
       end
@@ -31,36 +24,46 @@ RSpec.describe OrderAddress, type: :model do
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include("Postal code can't be blank")
       end
-      it 'postal_codeが半角のハイフンを含んだ正しい形式でないと保存できないこと' do
+
+      it 'postal_codeがハイフンを含んだ正しい形式でないと保存できないこと' do
         @order_address.postal_code = '1234567'
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include('Postal code is invalid. Include hyphen(-)')
       end
-      it 'prefectureを選択していないと保存できないこと' do
+
+      it '郵便番号は半角でないと保存できないこと' do
+        @order_address.postal_code = '１２３−４５６７'
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include('')
+      end
+
+      it '都道府県が必須であること' do
         @order_address.prefecture = 0
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include("Prefecture can't be blank")
       end
-      it 'priceが空だと保存できないこと' do
-        @order_address.price = nil
+
+      it '市区町村が必須であること' do
+        @order_address.city = ''
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Price can't be blank")
+        expect(@order_address.errors.full_messages).to include("")
       end
-      it 'priceが全角数字だと保存できないこと' do
-        @order_address.price = '２０００'
+
+      it '番地が必須であること' do
+        @order_address.address = ''
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include('Price is invalid')
+        expect(@order_address.errors.full_messages).to include("")
       end
-      it 'priceが1円未満では保存できないこと' do
-        @order_address.price = 0
-        @order_address.valid?
-        expect(@order_address.errors.full_messages).to include('Price is invalid')
+
+      it '電話番号が必須であること' do
       end
-      it 'priceが9,999,999円を超過すると保存できないこと' do
-        @order_address.price = 10_000_000
-        @order_address.valid?
-        expect(@order_address.errors.full_messages).to include('Price is invalid')
+
+      it '電話番号は10桁以上11桁以内の場合のみ保存可能なこと' do
       end
+
+      it '電話番号は半角数値のみ保存可能であること' do
+      end
+
       it 'userが紐付いていないと保存できないこと' do
         @order_address.user_id = nil
         @order_address.valid?

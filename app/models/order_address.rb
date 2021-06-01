@@ -8,12 +8,12 @@ class OrderAddress
     validates :prefecture, numericality: { other_than: 1 }
     validates :city
     validates :address
-    validates :phone, format: { with: /\A\d{10,11}\z/ }, numericality: { only_integer: true}
+    validates :phone, format: { with: /\A\d{10,11}\z/ }, numericality: { only_integer: true }
   end
 
   def save
     order = Order.create(user_id: user_id, item_id: item_id)
     Address.create(postal_code: postal_code, prefecture: prefecture, city: city, address: address, building: building,
-    phone: phone,order_id: order.id)                  
+                   phone: phone, order_id: order.id)
   end
 end

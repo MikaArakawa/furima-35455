@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
   def index
     @order_address = OrderAddress.new
     @item = Item.find(params[:item_id])
-    redirect_to root_path if @item.user_id == current_user.id
+    redirect_to root_path if @item.user_id == current_user.id || @item.order
   end
 
   def new
@@ -33,7 +33,6 @@ class OrdersController < ApplicationController
   end
 
   def pay_item
-    Payjp.setPublicKey(process.env.PAYJP_PUBLIC_KEY)
     Payjp::Charge.create(
       amount: @item.price,
       card: order_address_params[:token],

@@ -9,6 +9,7 @@ class OrderAddress
     validates :city
     validates :address
     validates :phone, format: { with: /\A\d{10,11}\z/ }, numericality: { only_integer: true }
+    validates :token
   end
 
   def save

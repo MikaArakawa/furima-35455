@@ -57,8 +57,8 @@
 | city            | string     | null: false                    |
 | address         | string     | null: false                    |
 | building        | string     |                                |
-| phone           | string     | null: false                    |            
-| order  | references | null: false, foreign_key: true |        
+| phone           | string     | null: false                    |     
+| order           | references | null: false, foreign_key: true |
 
 ### Association
-- belongs_to :purchased_item
+- belongs_to :order

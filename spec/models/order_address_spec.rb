@@ -82,13 +82,13 @@ RSpec.describe OrderAddress, type: :model do
       it '電話番号はハイフンを含まないこと' do
         @order_address.phone = '090-1111-1111'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include('Phone is invalid', 'Phone is not a number')
+        expect(@order_address.errors.full_messages).to include('Phone is invalid')
       end
 
       it '電話番号は半角数値のみ保存可能であること' do
         @order_address.phone = '０９０１１１１１１１１'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include('Phone is invalid', 'Phone is not a number')
+        expect(@order_address.errors.full_messages).to include('Phone is invalid')
       end
 
       it 'userが紐付いていないと保存できないこと' do
@@ -102,6 +102,13 @@ RSpec.describe OrderAddress, type: :model do
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include("Token can't be blank")
       end
+
+      it '商品のidが存在しない場合、購入できないこと' do
+        @order_address.item_id = nil
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include("Item can't be blank")
+      end
+    
     end
   end
 end

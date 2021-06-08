@@ -9,7 +9,7 @@ class Item < ApplicationRecord
     validates :shipping_charge_id,      numericality: { other_than: 1 }
     validates :prefecture_id,           numericality: { other_than: 1 }
     validates :shipping_date_id,        numericality: { other_than: 1 }
-    validates :image
+    validates :images
   end
 
   extend ActiveHash::Associations::ActiveRecordExtensions
@@ -21,5 +21,5 @@ class Item < ApplicationRecord
 
   has_one :order
   belongs_to :user
-  has_one_attached :image
+  has_many_attached :images
 end

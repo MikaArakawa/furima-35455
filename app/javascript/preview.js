@@ -31,14 +31,14 @@ document.addEventListener('DOMContentLoaded', function(){
 
       createImageHTML(blob)
     })
-  };
+  }
 
-    document.getElementById('item-image').addEventListener('change', function(e){
+  document.getElementById('item-image').addEventListener('change', (e) => {
+    let file = e.target.files[0];
+    let blob = window.URL.createObjectURL(file);
 
-      const file = e.target.files[0];
-      const blob = window.URL.createObjectURL(file);
+    createImageHTML(blob)
 
-      createImageHTML(blob);
     });
   }
 });

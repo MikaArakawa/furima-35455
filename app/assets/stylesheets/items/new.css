@@ -229,7 +229,16 @@
 }
 
 img {
-  height: 100px;
-  width: 100px;
+  height: 80%;
+  width: 80%;
   object-fit: contain;
+}
+
+.resize {
+  height: 500px;
+  width: 500px;
+  object-fit: contain;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }

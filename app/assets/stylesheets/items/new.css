@@ -228,12 +228,6 @@
   font-size: 13px;
 }
 
-img {
-  height: 80%;
-  width: 80%;
-  object-fit: contain;
-}
-
 .resize {
   height: 500px;
   width: 500px;

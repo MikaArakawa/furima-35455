@@ -236,3 +236,12 @@
   flex-direction: column;
   justify-content: center;
 }
+
+.image-element {
+  height: 500px;
+  width: 500px;
+  object-fit: contain;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

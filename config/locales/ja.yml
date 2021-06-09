@@ -1,0 +1,23 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        nickname: ニックネーム
+        surname: 姓
+        first_name: 名
+        sei: セイ
+        mei: メイ
+        birthday: 生年月日
+      item:
+        text: テキスト
+        images: 画像
+        title: 商品名
+        description: 説明
+        price: 価格
+        commit: 出品する
+        status_id: 商品の状態
+        category_id: カテゴリー
+        shipping_charge_id: 配送料の負担
+        prefecture_id: 発送元の地域
+        shipping_date_id: 発送までの日数
+
